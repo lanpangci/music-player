@@ -24,7 +24,6 @@
 
     //是否喜欢
     function renderLiking(isLike) {
-        console.log(isLike);
         if(isLike === true) {
             $scope.find('.like-btn').addClass('liking');
         }else {

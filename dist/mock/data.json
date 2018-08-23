@@ -2,28 +2,28 @@
     {
         "image": "/source/song_1.jpg",
         "audio": "/source/song_1.mp3",
-        "song": "丑八怪",
-        "album": "意外",
-        "singer": "薛之谦",
-        "duration": 253,
+        "song": "心跳23事",
+        "album": "心跳23事",
+        "singer": "小野道ono / 2233",
+        "duration": 260,
         "isLike": true
     },
     {
         "image": "/source/song_2.jpg",
         "audio": "/source/song_2.mp3",
-        "song": "小半",
-        "album": "小梦大半",
-        "singer": "陈粒",
-        "duration": 297,
+        "song": "蝴蝶旅客",
+        "album": "蝴蝶旅客",
+        "singer": "小野道 / 星尘",
+        "duration": 300,
         "isLike": false
     },
     {
         "image": "/source/song_3.jpg",
         "audio": "/source/song_3.mp3",
-        "song": "Shape of You",
-        "album": "÷",
-        "singer": "ed sheeran",
-        "duration": 235,
+        "song": "White Pieces",
+        "album": "Crimson Tempes",
+        "singer": "吉河順央",
+        "duration": 263,
         "isLike": false
     }
 ]
