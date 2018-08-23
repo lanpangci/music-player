@@ -21,9 +21,22 @@
             $scope.find('.img-wrapper').html(img);
         }
     }
+
+    //是否喜欢
+    function renderLiking(isLike) {
+        console.log(isLike);
+        if(isLike === true) {
+            $scope.find('.like-btn').addClass('liking');
+        }else {
+            $scope.find('.like-btn').removeClass('liking');
+        }
+    }
+
+    //将方法暴露
     root.render = (data) => {
         renderInderInfo(data);
         renderImg(data.image);
+        renderLiking(data.isLike);
     }
 
 })(window.Zepto, window.player || (window.player = {}));
