@@ -146,4 +146,6 @@ function getData(url) {
     })
 }
 
-getData('http://localhost:8090/dist/mock/data.json');
+//在GitHub上访问
+//在本地访问需要更改
+getData('https://lanpangci.github.io/music-player/dist/mock/data.json');
