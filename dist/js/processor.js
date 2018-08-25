@@ -31,18 +31,22 @@
     function updata(percent) {
         //计算已播放时间
         let curTime = curDuration * percent;
+        $scope.find('.pro-top').css('transform', `translateX(${(-1 + percent) * 100}%)`);
         curTime = formatTime(curTime);
         $scope.find('.cur-time').html(curTime);
     }
 
     //已播放时长显示
-    function start() {
+    function start(lastPer) {
+        //跳转传入lastPer
+        //没有跳转就等于本身
+        lastPercent = lastPer || lastPercent;
+        cancelAnimationFrame(frameId);
         //开始播放的时间
         startTime = new Date().getTime();
         //刷新时间
         function frame() {
             //当前时间
-            console.log(1);
             const curTime = new Date().getTime();
             //播放时间所占总时间的百分比
             const percent = lastPercent + (curTime - startTime) / 1000 / curDuration;
@@ -69,7 +73,8 @@
     root.processor = {
         renderAllTime: renderAllTime,
         start: start,
-        stop: stop
+        stop: stop,
+        updata: updata
     }
 
 }(window.Zepto, window.player ||(window.player = {})));

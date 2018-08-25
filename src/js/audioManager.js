@@ -22,6 +22,11 @@
             $scope.find('.play-btn').addClass('pause-btn');
             this.state = 'pause';
         },
+        //跳转
+        goTo(curTime) {
+            this.audio.currentTime = curTime;
+            this.play();
+        },
         //初始化音频
         setAudio(url) {
             this.audio.src = url;
