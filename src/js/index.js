@@ -3,6 +3,7 @@ const root = window.player;
 const $scope = $(document.body);
 const AudioManager = new root.AudioManager();
 const { renderAllTime, start, stop, updata } = root.processor;
+const { formatList, songSign } = root.songList;
 let control;
 let source;
 let index = 0;
@@ -47,6 +48,25 @@ function bindClick() {
             AudioManager.play();
             start();
         }
+    })
+    $scope.on('click', '.list-btn', () => {
+        $scope.find('.song-list').css('display', 'block');
+    })
+    $scope.on('click', 'li', (e) => {
+        index = $(e.target).index();
+        //刷新歌曲
+        root.render(source[index]);
+        //初始化音乐
+        AudioManager.setAudio(source[index].audio);
+        //播放
+        AudioManager.play();
+        renderAllTime(source[index].duration);
+        songSign(index);
+        start();
+        $scope.find('.song-list').css('display', 'none;');
+    })
+    $scope.on('click', '.close-btn', () => {
+        $scope.find('.song-list').css('display', 'none;');
     })
 }
 
@@ -102,6 +122,9 @@ function getData(url) {
         success: (data) => {
             //将数据绑定到全局
             source = data
+            //初始化歌曲列表
+            formatList(data, index);
+            songSign(index);
             //上下首切换
             control = new root.Control(data.length);
             //绑定点击事件
