@@ -1,7 +1,8 @@
 const $ = window.Zepto;
 const root = window.player;
 const $scope = $(document.body);
-let AudioManager = new root.AudioManager();
+const AudioManager = new root.AudioManager();
+const { renderAllTime, start, stop } = root.processor;
 let control;
 let index = 0;
 
@@ -36,8 +37,10 @@ function bindClick(data) {
         //根据state判断播放暂停
         if(AudioManager.state === 'play') {
             AudioManager.pause();
+            stop();
         }else {
             AudioManager.play();
+            start();
         }
     })
 }
@@ -59,6 +62,8 @@ function getData(url) {
             AudioManager.setAudio(data[index].audio);
             //播放
             AudioManager.play();
+            renderAllTime(data[index].duration);
+            start();
         },
         error: () => {
             console.log('error');
