@@ -19,6 +19,9 @@ function bindClick(data) {
         AudioManager.setAudio(data[index].audio);
         //播放
         AudioManager.play();
+        //时间显示
+        renderAllTime(data[index].duration);
+        start();
     })
     //下一首
     $scope.on('click', '.next-btn', () => {
@@ -30,6 +33,8 @@ function bindClick(data) {
         AudioManager.setAudio(data[index].audio);
         //播放
         AudioManager.play();
+        renderAllTime(data[index].duration);
+        start();
     })
     //点击播放
     //点击暂停
@@ -62,6 +67,7 @@ function getData(url) {
             AudioManager.setAudio(data[index].audio);
             //播放
             AudioManager.play();
+            //时间显示
             renderAllTime(data[index].duration);
             start();
         },

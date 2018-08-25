@@ -16,6 +16,8 @@
     }
     //显示歌曲的总时间
     function renderAllTime(duration) {
+        //初始化百分比
+        lastPercent = 0;
         //将总时间放到上一个作用域
         //便于计算经过时间所占百分比
         curDuration = duration;
@@ -40,6 +42,7 @@
         //刷新时间
         function frame() {
             //当前时间
+            console.log(1);
             const curTime = new Date().getTime();
             //播放时间所占总时间的百分比
             const percent = lastPercent + (curTime - startTime) / 1000 / curDuration;
