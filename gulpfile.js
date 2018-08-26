@@ -20,9 +20,9 @@ const devMode = process.env.NODE_ENV == 'development';
 gulp.task('html', () => {
     const html = gulp.src(folder.src + 'html/*')
         .pipe(connect.reload())
-    if (!devMode) {
-        html.pipe(htmlclean())
-    }
+    // if (!devMode) {
+    //     html.pipe(htmlclean())
+    // }
     html.pipe(gulp.dest(folder.dist + 'html/'));
 })
 
@@ -31,9 +31,9 @@ gulp.task('css', () => {
     const css = gulp.src(folder.src + 'css/*')
         .pipe(connect.reload())
         .pipe(less())
-    if (!devMode) {
-        css.pipe(postcss(options))
-    }
+    // if (!devMode) {
+    //     css.pipe(postcss(options))
+    // }
     css.pipe(gulp.dest(folder.dist + 'css/'));
 })
 

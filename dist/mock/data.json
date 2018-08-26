@@ -1,7 +1,7 @@
 [
     {
-        "image": "/music-player/source/song_1.jpg",
-        "audio": "/music-player/source/song_1.mp3",
+        "image": "/source/song_1.jpg",
+        "audio": "/source/song_1.mp3",
         "song": "心跳23事",
         "album": "心跳23事",
         "singer": "小野道ono / 2233",
@@ -9,8 +9,8 @@
         "isLike": true
     },
     {
-        "image": "/music-player/source/song_2.jpg",
-        "audio": "/music-player/source/song_2.mp3",
+        "image": "/source/song_2.jpg",
+        "audio": "/source/song_2.mp3",
         "song": "蝴蝶旅客",
         "album": "蝴蝶旅客",
         "singer": "小野道 / 星尘",
@@ -18,8 +18,8 @@
         "isLike": false
     },
     {
-        "image": "/music-player/source/song_3.jpg",
-        "audio": "/music-player/source/song_3.mp3",
+        "image": "/source/song_3.jpg",
+        "audio": "/source/song_3.mp3",
         "song": "White Pieces",
         "album": "Crimson Tempes",
         "singer": "吉河順央",

@@ -5,7 +5,7 @@
     //插入列表
     function formatList(data) {
         let listStr = ``;
-        data.forEach((ele, index) => {
+        data.forEach((ele) => {
             listStr += `<li>${ele.song}</li>`;
         })
         $scope.find('.list').html(listStr);

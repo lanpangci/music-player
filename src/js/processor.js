@@ -1,4 +1,4 @@
-(function($, root) {
+(function ($, root) {
     const $scope = $(document.body);
     let lastPercent = 0;
     let curDuration;
@@ -38,9 +38,7 @@
 
     //已播放时长显示
     function start(lastPer) {
-        //跳转传入lastPer
-        //没有跳转就等于本身
-        lastPercent = lastPer || lastPercent;
+
         cancelAnimationFrame(frameId);
         //开始播放的时间
         startTime = new Date().getTime();
@@ -51,11 +49,11 @@
             //播放时间所占总时间的百分比
             const percent = lastPercent + (curTime - startTime) / 1000 / curDuration;
             //判断是否播完
-            if(percent < 1) {
+            if (percent < 1) {
                 //一定时间刷新
                 frameId = requestAnimationFrame(frame);
                 updata(percent);
-            }else {
+            } else {
                 //播放完跳转下一首
                 $scope.find('.next-btn').trigger('click');
             }
@@ -70,11 +68,49 @@
         cancelAnimationFrame(frameId);
     }
 
+    //触碰跳转
+    function bindTouch(audio) {
+        $slidePoint = $scope.find('.slider-point');
+        const offset = $scope.find('.pro-wrapper').offset();
+        //获取时间线距左侧距离
+        const left = offset.left;
+        //获取时间线长度
+        const width = offset.width;
+
+        $slidePoint.on('touchstart', () => {
+            //触碰开始
+            //时间线移动和时间刷新停止
+            stop();
+        }).on('touchmove', (e) => {
+            const x = e.changedTouches[0].clientX;
+            //拖拽长度所占总长度比例
+            lastPercent = (x - left) / width;
+            //防止不超出时间线范围
+            if (lastPercent < 0) {
+                lastPercent = 0;
+            }
+            if (lastPercent > 1) {
+                lastPercent = 1;
+            }
+            //实时更新播放时间和时间线
+            updata(lastPercent);
+        }).on('touchend', () => {
+            //获取已播放时间
+            const curTime = lastPercent * source[index].duration;
+            //时间开始刷新
+            start(lastPercent);
+            //跳转播放
+            audio.goTo(curTime);
+        })
+    }
+
+    //将函数暴露出去
     root.processor = {
         renderAllTime: renderAllTime,
         start: start,
         stop: stop,
-        updata: updata
+        updata: updata,
+        bindTouch, bindTouch
     }
 
-}(window.Zepto, window.player ||(window.player = {})));
+}(window.Zepto, window.player || (window.player = {})));
